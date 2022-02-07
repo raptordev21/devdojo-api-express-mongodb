@@ -1,8 +1,10 @@
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
 const logger = require('./middleware/logger');
+const fileupload = require('express-fileupload')
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
@@ -27,9 +29,18 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
+// File uploading middleware
+app.use(fileupload())
+
+// Set static folder
+app.use(express.static(path.join(__dirname, 'public')))
+
 // Routes
 app.use('/api/v1/bootcamps', require('./routes/bootcamps'));
 app.use('/api/v1/courses', require('./routes/courses'));
+app.use('/api/v1/auth', require('./routes/auth'));
+app.use('/api/v1/users', require('./routes/users'));
+app.use('/api/v1/reviews', require('./routes/reviews'));
 
 // Custom error handling middleware, must placed after routes
 app.use(errorHandler);
