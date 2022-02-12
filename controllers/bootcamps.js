@@ -70,6 +70,7 @@ exports.deleteBootcamp = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404));
     }
 
+    // check publisher bootcamp delete access
     await bootcamp.remove();
 
     res.status(200).json({
