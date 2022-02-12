@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const colors = require('colors');
 const logger = require('./middleware/logger');
 const fileupload = require('express-fileupload')
+const cookieParser = require('cookie-parser')
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
@@ -18,6 +19,9 @@ const app = express();
 
 // Body parser
 app.use(express.json());
+
+// Cookie parser
+app.use(cookieParser());
 
 // Custom logging middleware
 if (process.env.NODE_ENV === 'development') {
@@ -39,8 +43,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/api/v1/bootcamps', require('./routes/bootcamps'));
 app.use('/api/v1/courses', require('./routes/courses'));
 app.use('/api/v1/auth', require('./routes/auth'));
-app.use('/api/v1/users', require('./routes/users'));
-app.use('/api/v1/reviews', require('./routes/reviews'));
+// app.use('/api/v1/users', require('./routes/users'));
+// app.use('/api/v1/reviews', require('./routes/reviews'));
 
 // Custom error handling middleware, must placed after routes
 app.use(errorHandler);
