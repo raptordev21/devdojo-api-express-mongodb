@@ -22,6 +22,7 @@ const { protect, authorize } = require('../middleware/auth');
 // Re-route into other resourse routers
 // router.use('/:bootcampId/courses', courseRouter);
 router.use('/:bootcampId/courses', require('./courses'));
+router.use('/:bootcampId/reviews', require('./reviews'));
 
 router
     .route('/')
