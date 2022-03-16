@@ -15,8 +15,11 @@ const cors = require('cors');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
-// Load env vars
-dotenv.config({ path: './config/config.env' });
+// Load env vars (development)
+// dotenv.config({ path: './config/config.env' });
+
+// Load env vars (production)
+dotenv.config({ path: '/home/raptor/config.env' });
 
 // Connect to database
 connectDB();
