@@ -4,8 +4,7 @@
   "description": "Devdojo backend API",
   "main": "server.js",
   "scripts": {
-    "startwin": "SET NODE_ENV=production & node server",
-    "start": "NODE_ENV=production node server",
+    "start": "node server",
     "server": "nodemon server"
   },
   "author": "Raptor Dev",

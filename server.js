@@ -7,10 +7,10 @@ const logger = require('./middleware/logger');
 const fileupload = require('express-fileupload')
 const cookieParser = require('cookie-parser')
 const mongoSanitize = require('express-mongo-sanitize');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
-const hpp = require('hpp');
+// const hpp = require('hpp');
 const cors = require('cors');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
@@ -46,7 +46,7 @@ app.use(fileupload())
 app.use(mongoSanitize())
 
 // Set security headers
-app.use(helmet())
+// app.use(helmet())
 
 // Prevent XSS attacks
 app.use(xss())
@@ -59,7 +59,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // Prevent http param pollution
-app.use(hpp());
+// app.use(hpp());
 
 // Enable CORS
 app.use(cors());

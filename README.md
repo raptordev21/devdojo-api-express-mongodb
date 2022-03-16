@@ -17,24 +17,6 @@ npm install
 npm install -g nodemon
 ```
 
-## Scripts Configuration :
-
-```javascript
-// Inside package.json file
-
-// For Windows OS:
-"scripts": {
-    "start": "SET NODE_ENV=production & node server",
-    "server": "nodemon server"
-  },
-  
-// For Mac/Linux OS:
-"scripts": {
-    "start": "NODE_ENV=production node server",
-    "server": "nodemon server"
-  },
-```
-
 ## Run App :
 
 ```
